@@ -6,7 +6,9 @@ class YardSalesController < ApplicationController
   end
 
   def create
-    # TODO
+    # TODO: Get Date and City from passed in params
+    # Figure out what scrapers to use based on City
+    render json: ScrapeManager.test_yard_sales(city: yard_sale_params[:city], date: yard_sale_params[:date])
   end
 
   private def yard_sale_params
