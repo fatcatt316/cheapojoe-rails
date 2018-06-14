@@ -13,7 +13,7 @@ module YardsaleSearch
   # ]
   # date = Date.new(2018, 6, 9)
   def yard_sales(city: 'Durham', date: Date.today)
-    return [] unless city in CITIES
+    return [] unless city.in?(CITIES)
 
     scraper = Mechanize.new
     scraper.get(search_url(city: city, date: date)) do |search_page|
