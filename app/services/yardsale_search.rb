@@ -11,10 +11,10 @@ module YardsaleSearch
   #   {:city=>"Durham", :state=>"North Carolina", :street_address=>"1116 Alben St", :description=>"Swing by on Saturday as we have multiple families eager to clear out some… Read More →"},
   #   {:city=>"Durham", :state=>"North Carolina", :street_address=>"816 Northwood Hills Ave", :description=>"Gently used furniture, clothing, bikes, household decor and more!!! Moving and… Read More →"}
   # ]
-  # date = Date.new(2018, 6, 9)
   def yard_sales(city: 'Durham', date: Date.today)
     return [] unless city.in?(CITIES)
 
+    # date = Date.new(2018, 6, 16)
     scraper = Mechanize.new
     scraper.get(search_url(city: city, date: date)) do |search_page|
       return yard_sales_details(search_page)
