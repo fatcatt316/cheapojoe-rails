@@ -1,4 +1,4 @@
-module ScrapeManager
+module ScrapeManager::Base
   extend self
 
   def yard_sales(city: 'Durham', date: Date.today)

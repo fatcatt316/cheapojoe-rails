@@ -1,5 +1,5 @@
 require 'mechanize'
-module Craigslist
+module ScrapeManager::Craigslist
   extend self
 
   CITY_MAP = {

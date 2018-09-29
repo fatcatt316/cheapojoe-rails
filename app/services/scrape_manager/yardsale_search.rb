@@ -1,5 +1,5 @@
 require 'mechanize'
-module YardsaleSearch
+module ScrapeManager::YardsaleSearch
   extend self
 
   CITIES = %w(Asheville Durham)
