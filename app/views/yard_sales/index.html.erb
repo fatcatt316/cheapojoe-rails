@@ -6,11 +6,11 @@ Let's find you some yard sales...
     <%= label_tag :city, 'City:' %>
     <%= select_tag :city, options_for_select(@cities) %>
   </div>
-  <div>
+  <!-- <div> -->
     <%# TODO: Default to today's date %>
-    <%= label_tag :date, 'Date:' %>
-    <%= text_field_tag :date %>
-  </div>
+    <%#= label_tag :date, 'Date:' %>
+    <%#= text_field_tag :date %>
+  <!-- </div> -->
   <div>
     <%= submit_tag("Find 'em") %>
   </div>
