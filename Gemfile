@@ -7,10 +7,10 @@ git_source(:github) do |repo_name|
 end
 
 gem 'rails', '~> 5.2.0'
-gem 'pg', '1.0.0'
+gem 'pg', '1.1.3'
 
 gem 'puma', '~> 3.7'
-gem 'sass-rails', '~> 5.0'
+gem 'redis', '~> 4.0.2'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 
