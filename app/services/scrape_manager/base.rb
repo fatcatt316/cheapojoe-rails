@@ -9,7 +9,9 @@ module ScrapeManager::Base
   end
 
   def test_yard_sales(city: 'Asheville', date: Date.today)
-    YardsaleSearch.test_yard_sales(city: city, date: date)
-    # TODO: Add ScrapeManager::YardSalesNet
+    [
+      ScrapeManager::YardsaleSearch.test_yard_sales(city: city, date: date),
+      ScrapeManager::YardSalesNet.test_yard_sales(city: city, date: date)
+    ].flatten
   end
 end

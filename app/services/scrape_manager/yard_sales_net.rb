@@ -23,8 +23,7 @@ module ScrapeManager::YardSalesNet
   end
 
   def test_yard_sales(city: 'Asheville', date: Date.today)
-    # TODO
-    # [{:city=>"Durham", :state=>"North Carolina", :street_address=>"414 N Hardee St", :description=>"Huge yard sale everything must go sandals tennis shoes house hold items children… Read More →"}, {:city=>"Durham", :state=>"North Carolina", :street_address=>"1116 Alben St", :description=>"Swing by on Saturday as we have multiple families eager to clear out some… Read More →"}, {:city=>"Durham", :state=>"North Carolina", :street_address=>"816 Northwood Hills Ave", :description=>"Gently used furniture, clothing, bikes, household decor and more!!! Moving and… Read More →"}]
+    [{:city=>"Weaverville", :state=>"North Carolina", :street_address=>"72 Amber Knolls Court", :zip_code=>"28787", :description=>"We have antiques, furniture, smalls, glass, Tv , large love seat from havertys, cozy chair, beautiful rug, call to arrange pick up #828-284-3564… → Read More"}, {:city=>"Swannanoa", :state=>"North Carolina", :street_address=>" Samson Way", :zip_code=>"28778", :description=>"Swannanoa’s popular twice-annual community yard sale will take place on Saturday, October 6, from 8 a.m. - 1 p.m., in the Swannanoa Ingles parking lot, 2299 U.S. Highway 70. The sale attracts dozens of sellers and hundreds of shoppers - there’s something for everyone! Seller spaces (approx. 10’ x 15'; bring your own tables) are $10 each. To reserve a… → Read More"}, {:city=>"Arden", :state=>"North Carolina", :street_address=>"4 Pond Street", :zip_code=>"28704", :description=>"SONshine Crafters Annual Craft Show\nSaturday October 27, 2018  9AM to 3PM\nSkyland First Baptist Church\n2115 Hendersonville Rd\nArden, NC 28704… → Read More"}]
   end
 
   private def search_url(city: 'Asheville', date: Date.today)
@@ -48,9 +47,10 @@ module ScrapeManager::YardSalesNet
     {
       city: city_from_meta(yard_sale.at('.meta')&.text) || result.city,
       state: result.state,
-      street_address: [result.house_number, result.street].join(' '),
+      street_address: [result.house_number, result.street].compact.join(' '),
       zip_code: result.postal_code,
-      description: yard_sale.at('[itemprop="description"]')&.text
+      description: yard_sale.at('[itemprop="description"]')&.text,
+      source: 'yardsales.net'
     }
   end
 

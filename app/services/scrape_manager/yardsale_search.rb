@@ -22,7 +22,11 @@ module ScrapeManager::YardsaleSearch
   end
 
   def test_yard_sales(city: 'Asheville', date: Date.today)
-    [{:city=>"Durham", :state=>"North Carolina", :street_address=>"414 N Hardee St", :description=>"Huge yard sale everything must go sandals tennis shoes house hold items children… Read More →"}, {:city=>"Durham", :state=>"North Carolina", :street_address=>"1116 Alben St", :description=>"Swing by on Saturday as we have multiple families eager to clear out some… Read More →"}, {:city=>"Durham", :state=>"North Carolina", :street_address=>"816 Northwood Hills Ave", :description=>"Gently used furniture, clothing, bikes, household decor and more!!! Moving and… Read More →"}]
+    [
+      {:city=>"Durham", :state=>"North Carolina", :street_address=>"414 N Hardee St", :description=>"Huge yard sale everything must go sandals tennis shoes house hold items children… Read More →", source: 'yardsalesearch.com'},
+      {:city=>"Durham", :state=>"North Carolina", :street_address=>"1116 Alben St", :description=>"Swing by on Saturday as we have multiple families eager to clear out some… Read More →", source: 'yardsalesearch.com'},
+      {:city=>"Durham", :state=>"North Carolina", :street_address=>"816 Northwood Hills Ave", :description=>"Gently used furniture, clothing, bikes, household decor and more!!! Moving and… Read More →", source: 'yardsalesearch.com'}
+    ]
   end
 
   private def yard_sales_details(search_page)
@@ -42,7 +46,8 @@ module ScrapeManager::YardsaleSearch
       city: yard_sale.at('[itemprop="addressLocality"]')&.text,
       state: 'North Carolina',# TODO: Other states
       street_address: yard_sale.at('[itemprop="streetAddress"]').text,
-      description: yard_sale.at('[itemprop="description"]')&.text
+      description: yard_sale.at('[itemprop="description"]')&.text,
+      source: 'yardsalesearch.com'
     }
   end
 end
