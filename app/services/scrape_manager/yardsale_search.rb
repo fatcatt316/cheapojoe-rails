@@ -11,7 +11,7 @@ module ScrapeManager::YardsaleSearch
   #   {:city=>"Durham", :state=>"North Carolina", :street_address=>"1116 Alben St", :description=>"Swing by on Saturday as we have multiple families eager to clear out some… Read More →"},
   #   {:city=>"Durham", :state=>"North Carolina", :street_address=>"816 Northwood Hills Ave", :description=>"Gently used furniture, clothing, bikes, household decor and more!!! Moving and… Read More →"}
   # ]
-  def yard_sales(city: 'Durham', date: Date.today)
+  def yard_sales(city: 'Asheville', date: Date.today)
     return [] unless city.in?(CITIES)
 
     # date = Date.new(2018, 6, 16)
@@ -21,7 +21,7 @@ module ScrapeManager::YardsaleSearch
     end
   end
 
-  def test_yard_sales(city: 'Durham', date: Date.today)
+  def test_yard_sales(city: 'Asheville', date: Date.today)
     [{:city=>"Durham", :state=>"North Carolina", :street_address=>"414 N Hardee St", :description=>"Huge yard sale everything must go sandals tennis shoes house hold items children… Read More →"}, {:city=>"Durham", :state=>"North Carolina", :street_address=>"1116 Alben St", :description=>"Swing by on Saturday as we have multiple families eager to clear out some… Read More →"}, {:city=>"Durham", :state=>"North Carolina", :street_address=>"816 Northwood Hills Ave", :description=>"Gently used furniture, clothing, bikes, household decor and more!!! Moving and… Read More →"}]
   end
 
@@ -31,7 +31,7 @@ module ScrapeManager::YardsaleSearch
     end
   end
 
-  private def search_url(city: 'Durham', date: Date.today)
+  private def search_url(city: 'Asheville', date: Date.today)
     # https://www.yardsalesearch.com/garage-sales.html?r=5&zip=Durham%2C+North+Carolina&date=2018-06-08
     # TODO: More than just North Carolina
     "https://www.yardsalesearch.com/garage-sales.html?r=5&zip=#{city}%2C+North+Carolina&date=#{date}"
