@@ -1,7 +1,7 @@
 Geocoder.configure(
   # By default Geocoder will rescue any exceptions raised by calls
   # to a geocoding service and return an empty array.
-  always_raise: :all
+  always_raise: :all,
 
   # street address geocoding service (default :nominatim)
   # lookup: :yandex,
@@ -19,6 +19,6 @@ Geocoder.configure(
   # units: :km,
 
   # caching (see [below](#caching) for details):
-  # cache: Redis.new,
+  cache: Redis.new
   # cache_prefix: "..."
 )
