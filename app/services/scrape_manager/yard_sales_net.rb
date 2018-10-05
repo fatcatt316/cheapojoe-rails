@@ -50,8 +50,14 @@ module ScrapeManager::YardSalesNet
       street_address: [result.house_number, result.street].compact.join(' '),
       zip_code: result.postal_code,
       description: yard_sale.at('[itemprop="description"]')&.text,
+      url: url(yard_sale),
       source: 'yardsales.net'
     }
+  end
+
+  private def url(yard_sale)
+    url = yard_sale.search('a').find{ |link| link['href'].starts_with?("/s/") }.try(:[], 'href')
+    File.join('https://yardsales.net', url) if url
   end
 
   # e.g., "Posted on Sat, Sep 29, 2018 at 06:29 AM in Hendersonville, NC"
