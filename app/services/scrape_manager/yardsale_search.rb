@@ -45,7 +45,7 @@ module ScrapeManager::YardsaleSearch
     {
       city: yard_sale.at('[itemprop="addressLocality"]')&.text,
       state: 'North Carolina',# TODO: Other states
-      street_address: yard_sale.at('[itemprop="streetAddress"]').text,
+      street_address: yard_sale.at('[itemprop="streetAddress"]').try(:text),
       description: yard_sale.at('[itemprop="description"]')&.text,
       url: yard_sale.search('a').find{ |link| link['href'] =~ /.*\?id=\d+\z/ }.try(:[], 'href'),
       source: 'yardsalesearch.com',
